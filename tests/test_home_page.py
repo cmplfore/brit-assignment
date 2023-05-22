@@ -3,10 +3,9 @@ from pages.home import HomePage
 from pages.search import SearchResultPage
 
 
-def test_home_page_search(page: Page) -> None:
-    home_page = HomePage(page)
-    results_page = SearchResultPage(page)
-
+def test_home_page_search(page: Page,
+                          results_page: SearchResultPage,
+                          home_page: HomePage) -> None:
     home_page.load()
     home_page.accept_cookies()
     expect(page).to_have_title('Brit Insurance')
@@ -29,6 +28,6 @@ def test_home_page_contact_us_navigation(page: Page) -> None:
     page.get_by_role("link", name="contact").click()
     expect(page).to_have_title('Contact')
 
-    formatted_address = page.locator('xpath=//*[@id="bermudaoffice"]//address').inner_text().strip().replace('\n',' ')
+    formatted_address = page.locator('xpath=//*[@id="bermudaoffice"]//address').inner_text().strip().replace('\n', ' ')
     assert 'Ground Floor, Chesney House The Waterfront, 96 Pitts Bay Road, Pembroke, Hamilton HM 08, Bermuda' \
            in formatted_address
