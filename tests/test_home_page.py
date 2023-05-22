@@ -1,9 +1,11 @@
 from playwright.sync_api import expect, Page
 from pages.home import HomePage
+from pages.search import SearchResultPage
 
 
 def test_home_page_search(page: Page) -> None:
     home_page = HomePage(page)
+    results_page = SearchResultPage(page)
 
     home_page.load()
     home_page.accept_cookies()
@@ -13,11 +15,8 @@ def test_home_page_search(page: Page) -> None:
 
     expect(page).to_have_title('Search')
 
-    results = page.locator('xpath=//*[contains(@class,"results-container")]//*[contains(@class,"s-results")]/a')
-
-    assert len(results.all_text_contents()) >= 3
-
-    expect(results).to_have_text([
+    search_results = results_page.search_results()
+    expect(search_results).to_have_text([
         'Interim results for the six months ended 30 June 2022',
         'Gavin Wilkinson',
         'John King'])
