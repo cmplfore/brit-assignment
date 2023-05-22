@@ -15,8 +15,7 @@ def test_home_page_search(page: Page) -> None:
 
     expect(page).to_have_title('Search')
 
-    search_results = results_page.search_results()
-    expect(search_results).to_have_text([
+    expect(results_page.results).to_have_text([
         'Interim results for the six months ended 30 June 2022',
         'Gavin Wilkinson',
         'John King'])
