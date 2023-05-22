@@ -6,14 +6,14 @@ from pages.search import SearchResultPage
 def test_home_page_search(page: Page,
                           results_page: SearchResultPage,
                           home_page: HomePage) -> None:
+
     home_page.load()
     home_page.accept_cookies()
+
     expect(page).to_have_title('Brit Insurance')
 
     home_page.search('IFRS 17')
-
     expect(page).to_have_title('Search')
-
     expect(results_page.results).to_have_text([
         'Interim results for the six months ended 30 June 2022',
         'Gavin Wilkinson',
