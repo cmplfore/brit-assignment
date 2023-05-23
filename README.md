@@ -20,6 +20,7 @@ Assumptions have been made that you're running the latest version of Python and 
 
 # Improvements
 
-1. Convert both tests to use Page Object Pattern.
+~~1. Convert both tests to use Page Object Pattern.~~
 2. Improve the locators - I've currently used Xpaths and some built in Playwright locating methods. Would be better to keep it consistent throughout and also use unique test ids or just ids.
 3. Reports for the results could be added to show results of test runs.
+4. Currently both tests are in the 1 test file, this could be better split up to make it easier to understand what is being tested.
